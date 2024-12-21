@@ -14,6 +14,7 @@ app.use(express.json());
 
 
 app.get('/api/greetings', getAllGreetings);
+app.get('/', getAllGreetings);
 
 
 app.listen(PORT, () => {
