@@ -6,7 +6,7 @@ const cors = require('cors');
 const { getAllGreetings } = require('./controllers/greetingsController');
 
 const app = express();
-const PORT = 80;
+const PORT = 3000;
 
 
 app.use(cors());
