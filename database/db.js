@@ -13,8 +13,6 @@ const config = {
   }
 };
 
-console.log(config)
-
 let poolPromise;
 
 const getPoolPromise = () => {
@@ -93,8 +91,9 @@ const seedDatabase = async () => {
   }
 };
 
-seedDatabase();
-
+if(process.env.USE_DB === 'true') {
+  seedDatabase();
+}
 
 
 module.exports = { sql, poolPromise };
