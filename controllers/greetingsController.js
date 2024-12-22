@@ -1,16 +1,10 @@
-const { inMemoryGreetings } = require('../data/greetings');
 const { poolPromise } = require('../database/db');
-
 
 const getAllGreetings = async (req, res) => {
   try {
-    if(process.env.USE_DB === 'true') {
-      const pool = await poolPromise;
-      const result = await pool.request().query('SELECT * FROM [greetings].[dbo].[greetings]');
-      res.json(result.recordset);
-    } else {
-      res.json(inMemoryGreetings);
-    }
+    const pool = await poolPromise;
+    const result = await pool.request().query('SELECT * FROM [greetings].[dbo].[greetings]');
+    res.json(result.recordset);
    
   } catch (err) {
     console.error('Error fetching greetings:', err.message);

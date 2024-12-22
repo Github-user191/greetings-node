@@ -93,9 +93,8 @@ const seedDatabase = async () => {
   }
 };
 
-if(process.env.USE_DB === 'true') {
-  seedDatabase();
-}
+seedDatabase();
+
 
 
 module.exports = { sql, poolPromise };
