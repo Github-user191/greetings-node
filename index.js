@@ -6,7 +6,7 @@ const cors = require('cors');
 const { getAllGreetings } = require('./controllers/greetingsController');
 
 const app = express();
-const PORT = 3000;
+const PORT = 8080;
 
 
 app.use(cors());
@@ -17,6 +17,8 @@ app.get('/api/greetings', getAllGreetings);
 app.get('/', getAllGreetings);
 
 
+
+
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });

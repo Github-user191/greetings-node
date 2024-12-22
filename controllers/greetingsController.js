@@ -5,10 +5,14 @@ const { poolPromise } = require('../database/db');
 const getAllGreetings = async (req, res) => {
   try {
     if(process.env.USE_DB === 'true') {
+      console.log("GETTING ALL GREETINGS with DB")
+
       const pool = await poolPromise;
       const result = await pool.request().query('SELECT * FROM [greetings].[dbo].[greetings]');
       res.json(result.recordset);
     } else {
+      console.log("GETTING ALL GREETINGS with IN MEM")
+
       res.json(inMemoryGreetings);
     }
    
