@@ -10,7 +10,7 @@ const getAllGreetings = async (req, res) => {
 
       console.log("GETTING ALL GREETINGS with DB")
       const pool = await poolPromise;
-      const result = await pool.request().query('SELECT * FROM [greetings].[dbo].[greetings]');
+      const result = await pool.request().query('SELECT * FROM [greetings]');
       res.json(result.recordset);
     } else {
       console.log("GETTING ALL GREETINGS with IN MEM")
@@ -20,7 +20,7 @@ const getAllGreetings = async (req, res) => {
 
     console.log("endpoint called - /api/greetings")
     trackEvent('Endpoint called - /api/greetings', {
-      source: 'getAllGreetings',
+      function: 'getAllGreetings',
       endpoint: `localhost:8080/api/greetings`
     });
    
