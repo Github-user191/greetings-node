@@ -7,6 +7,7 @@ const getAllGreetings = async (req, res) => {
 
   console.log("CONN STRING ", process.env.APPLICATIONINSIGHTS_CONNECTION_STRING)
 
+  console.log("USE_DB ", process.env.USE_DB)
   try {
     if(process.env.USE_DB === 'true') {
 
