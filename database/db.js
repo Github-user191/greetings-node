@@ -5,7 +5,7 @@ const config = {
   user: process.env.DB_USER, // SQL user (use 'sa' or any other SQL login)
   password: process.env.DB_PASSWORD, // SQL user password
   server: process.env.DB_SERVER, // Local instance of SQL Server Express
-  database: '', // Initially connect without specifying a database
+  database: process.env.DB_NAME, // Initially connect without specifying a database
   options: {
     trustedConnection: false,
     enableArithAbort: true, // Required for compatibility with modern SQL Server
