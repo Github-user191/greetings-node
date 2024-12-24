@@ -1,15 +1,15 @@
 const sql = require('mssql');
+const { trackException } = require('../insights/customInsights');
 
-// MSSQL Configuration
 const config = {
-  user: process.env.DB_USER, // SQL user (use 'sa' or any other SQL login)
-  password: process.env.DB_PASSWORD, // SQL user password
-  server: process.env.DB_SERVER, // Local instance of SQL Server Express
-  database: process.env.DB_NAME, // Initially connect without specifying a database
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  server: process.env.DB_SERVER,
+  database: process.env.DB_NAME,
   options: {
     trustedConnection: false,
-    enableArithAbort: true, // Required for compatibility with modern SQL Server
-    trustServerCertificate: true, // To avoid SSL trust errors
+    enableArithAbort: true,
+    trustServerCertificate: true,
   }
 };
 
@@ -23,8 +23,12 @@ const getPoolPromise = () => {
         console.log('Connected to MSSQL');
         return pool;
       })
-      .catch((err) => {
-        console.error('Database Connection Failed:', err.message);
+      .catch((error) => {
+        console.error('Database Connection Failed:', error.message);
+
+        trackException(error, {
+          
+        });
       });
   }
   return poolPromise;
